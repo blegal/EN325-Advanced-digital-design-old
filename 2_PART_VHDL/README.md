@@ -54,7 +54,7 @@ Vous allez maintenant étudier un cas particulier. Vous allez implanter quelques
 
 ##	Etape 4 : Division de nombres entiers
 
-Vous allez terminer l’étude des opérateurs entiers avec l’étude de l’opérateur de division. Cette opération peut s’implanter sous la forme. Cette étude se limitera à l’opérateur de division 32 bits manipulant des données non signées.
+Vous allez terminer l’étude des opérateurs entiers avec l’étude de l’opérateur de division. Cette étude se limitera à l’opérateur de division 32 bits manipulant des données non signées.
 - Dessinez la structure de deux étages « élémentaires » de l’opérateur de division.
 - Récupérer le diviseur 32 bits que votre enseignant a mis à votre disposition afin de vous faire gagner beaucoup de temps.
 - Réalisez la synthèse logique du module de division. Interprétez le résultat obtenu.
@@ -80,12 +80,12 @@ Pour vous aider dans votre travail vous avez à votre disposition le code VHDL d
 Maintenant que vous savez comment sont codés les nombres flottants et que vous maitrisez leur multiplication, nous allons maintenant étudiez le processus d’addition. Téléchargez le code VHDL décrivant l’opération d’addition disponible ici et retournez vous documenter sur le principe de base de l’adition flottante par exemple ici ou bien là (cours de guyot).
 - Analysez le code VHDL de l’opérateur de multiplication afin de retrouver la description algorithmique de l’opération.
 - Dessinez l’architecture matérielle mise en œuvre dans le code VHDL.
-- Faites une synthèse de l’additionneur flottant d’extraire ses caractéristiques.
+- Faites une synthèse de l’additionneur flottant afin d’extraire ses caractéristiques.
 - Comparez les performances relevées avec celles obtenues précédemment.
 
 ##	Etape 8 : Amélioration des performances
 
-Les performances de opérateurs flottants peuvent être améliorées en ajoutant par exemple des tranches de pipeline en interne (réduction des chemins critiques). Nous ne réaliserons pas cette étape fastidieuse manuellement dans le cadre de ce TP.
+Les performances des opérateurs flottants peuvent être améliorées en ajoutant par exemple des tranches de pipeline en interne (réduction des chemins critiques). Nous ne réaliserons pas cette étape fastidieuse manuellement dans le cadre de ce TP.
 - Utilisez l’outil Core Generator, afin d’utiliser les composants matériels développés par les ingénieur de chez Xilinx. Développez plusieurs solutions de multiplieurs et d’additionneurs afin de regarder les compromis surface & débits accessibles.
 - Essayer de synthétiser au moins un opérateur afin de valider les estimations de performance fournies.
 - L’utilisation de Core Generator est elle intéressantes vis à vis des opérations décrites manuellement ? Pour quelles caractéristiques ? Quel est le cout d’un tel outil ?
