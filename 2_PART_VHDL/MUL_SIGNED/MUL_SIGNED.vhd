@@ -1,20 +1,20 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
+-- Company:
+-- Engineer:
+--
 -- Create Date:
--- Design Name: 
+-- Design Name:
 -- Module Name:
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
+-- Project Name:
+-- Target Devices:
+-- Tool versions:
+-- Description:
 --
--- Dependencies: 
+-- Dependencies:
 --
--- Revision: 
+-- Revision:
 -- Revision 0.01 - File Created
--- Additional Comments: 
+-- Additional Comments:
 --
 ----------------------------------------------------------------------------------
 library IEEE;
@@ -25,10 +25,10 @@ ENTITY MUL_SIGNED IS
 	GENERIC (
 		CONSTANT BITWIDTH : NATURAL := 16
 	);
-	PORT ( 
-		INPUT_1  : in  STD_LOGIC_VECTOR(  BITWIDTH-1 DOWNTO 0);
-		INPUT_2  : in  STD_LOGIC_VECTOR(  BITWIDTH-1 DOWNTO 0);
-		OUTPUT_1 : out STD_LOGIC_VECTOR(2*BITWIDTH-1 DOWNTO 0)
+	PORT (
+		INPUT_1  : in  STD_LOGIC_VECTOR(BITWIDTH-1 DOWNTO 0);
+		INPUT_2  : in  STD_LOGIC_VECTOR(BITWIDTH-1 DOWNTO 0);
+		OUTPUT_1 : out STD_LOGIC_VECTOR(BITWIDTH-1 DOWNTO 0)
 		);
 	END;
 
