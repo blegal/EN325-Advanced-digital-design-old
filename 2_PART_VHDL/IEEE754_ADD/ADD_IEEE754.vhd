@@ -13,14 +13,14 @@ library work;
 use work.all;
 
 
-entity ADD_FLOAT_32 is
+entity ADD_FLOAT32b is
 port( INPUT_1: in std_logic_vector(31 downto 0);
       INPUT_2: in std_logic_vector(31 downto 0);
       OUTPUT_1: out std_logic_vector(31 downto 0)
       );
-end ADD_FLOAT_32;
+end ADD_FLOAT32b;
 
-Architecture corps of ADD_FLOAT_32 is
+Architecture corps of ADD_FLOAT32b is
 
  COMPONENT selection is 
    port( 

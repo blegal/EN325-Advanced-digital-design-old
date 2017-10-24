@@ -1,27 +1,36 @@
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 -- Company: 
--- Engineer:       Bertrand LE GAL
--- Create Date:    09:00:44 07/08/2008 
+-- Engineer: 
+-- 
+-- Create Date:
 -- Design Name: 
--- Module Name:    MyReceiver - Behavioral 
+-- Module Name:
 -- Project Name: 
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
+-- Target Devices: 
+-- Tool versions: 
+-- Description: 
+--
+-- Dependencies: 
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
 LIBRARY IEEE ;
 USE IEEE.STD_LOGIC_1164.ALL ;
 USE IEEE.STD_LOGIC_SIGNED.ALL ;
 USE IEEE.STD_LOGIC_ARITH.ALL ;
 
-ENTITY MUL_FLOAT_32 IS
+ENTITY MUL_FLOAT32b IS
 	PORT (
-				INPUT_1         : IN  Std_Logic_Vector(31 DOWNTO 0)  ;
-				INPUT_2         : IN  Std_Logic_Vector(31 DOWNTO 0)  ;
-				OUTPUT_1         : OUT Std_Logic_Vector(31 DOWNTO 0)  
+		INPUT_1         : IN  Std_Logic_Vector(31 DOWNTO 0)  ;
+		INPUT_2         : IN  Std_Logic_Vector(31 DOWNTO 0)  ;
+		OUTPUT_1         : OUT Std_Logic_Vector(31 DOWNTO 0)  
 	);
-END MUL_FLOAT_32 ;
+END MUL_FLOAT32b ;
 
-ARCHITECTURE comportementale OF MUL_FLOAT_32 IS 
+ARCHITECTURE comportementale OF MUL_FLOAT32b IS 
 BEGIN
 	ProcessOperateur_3 : PROCESS (INPUT_1, INPUT_2)
 		VARIABLE exception  : Std_Logic 					:= '0';

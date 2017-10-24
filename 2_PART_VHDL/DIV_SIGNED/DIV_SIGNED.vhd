@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    15:55:27 01/06/2010 
+-- Create Date:
 -- Design Name: 
--- Module Name:    divider_generic - Behavioral 
+-- Module Name:
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -21,24 +21,18 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
----- Uncomment the following library declaration if instantiating
----- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
-entity divider_generic is
+entity DIV_SIGNED is
 	GENERIC(
 		N : INTEGER := 8
 	);
 	PORT (
-				INPUT_1         : IN  Std_Logic_Vector(N-1 DOWNTO 0);
-				INPUT_2         : IN  Std_Logic_Vector(N-1 DOWNTO 0);
-				OUTPUT_1        : OUT Std_Logic_Vector(N-1 DOWNTO 0)
+	   INPUT_1  : IN  Std_Logic_Vector(N-1 DOWNTO 0);
+	   INPUT_2  : IN  Std_Logic_Vector(N-1 DOWNTO 0);
+	   OUTPUT_1 : OUT Std_Logic_Vector(N-1 DOWNTO 0)
 	);
-end divider_generic;
+end DIV_SIGNED;
 
-
-architecture Behavioral of divider_generic is
+architecture arch of DIV_SIGNED is
 begin
 
 	PROCESS(INPUT_1, INPUT_2)
@@ -48,7 +42,6 @@ begin
 	BEGIN
 		A := TO_UNSIGNED(0, N-1) & UNSIGNED( INPUT_1 );
 		B := UNSIGNED( INPUT_2 );
-
 		for Z in 0 to (N-1) loop
 			IF A(2*N-2-Z downto 2*N-2-Z-(N-1)) >= B THEN
 				A(2*N-2-Z downto 2*N-2-Z-(N-1)) := A(2*N-2-Z downto 2*N-2-Z-(N-1)) - B;
@@ -56,10 +49,8 @@ begin
 			ELSE
 				OUTPUT_1(N-1-Z) <= '0';
 			END IF;
-
 		END loop;
-		
 	END PROCESS;
 
-end Behavioral;
+end arch;
 
