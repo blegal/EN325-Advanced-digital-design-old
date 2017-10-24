@@ -32,7 +32,8 @@ L’opérateur d’addition est l’opérateur matériel le plus simple. Dans la
 
 **Remarque**
 
-Pour des raisons de simplicité, nous omettrons la propagation des bits de poids fort en sortie de la multiplication. En effet une multiplication de deux données codées sur *N* bits produit un résultat sur *2N* bits. Ainsi l’opérateur de multiplication que vous devez implanter consomme deux données sur N bits en entrée et produit une donnée sur *N* bits en sortie. Dans un processeur traditionnel ce n’est toujours le cas.
+Une multiplication de deux données signées codées respectivement sur *N* bits produit un résultat sur *2N* bits.
+Pour des raisons de simplicité, nous omettrons la propagation des *N* bits de poids fort en sortie de la multiplication.
 
 A partir de ces informations :
 - Récuperer le fichier VHDL fourni par votre enseignant [MUL_SIGNED.vhd](./MUL_SIGNED/MUL_SIGNED.vhd).
@@ -53,7 +54,7 @@ Vous allez maintenant étudier un cas particulier. Vous allez implanter quelques
 
 ##	Etape 4 : Division de nombres entiers
 
-Vous allez terminer l’étude des opérateurs entiers avec l’étude de l’opérateur de division. Cette opération peut s’implanter sous la forme. Cette étude se limitera à l’opérateur de division 32 bits manipulant des données non signées. 
+Vous allez terminer l’étude des opérateurs entiers avec l’étude de l’opérateur de division. Cette opération peut s’implanter sous la forme. Cette étude se limitera à l’opérateur de division 32 bits manipulant des données non signées.
 - Dessinez la structure de deux étages « élémentaires » de l’opérateur de division.
 - Récupérer le diviseur 32 bits que votre enseignant a mis à votre disposition afin de vous faire gagner beaucoup de temps.
 - Réalisez la synthèse logique du module de division. Interprétez le résultat obtenu.
@@ -67,7 +68,7 @@ Vous venez de récolter un nombre important de mesures. Il est temps d’en fair
 ##	Etape 6 : Multiplication de nombres flottants (32 bits)
 
 Maintenant que vous maitrisez l’implantation des opérations entières, vous allez étudier les opérateurs flottants. Pour commencer, vous allez essayer de comprendre la manière dont est réalisé une multiplication flottante entre deux nombres. Le format de codage des nombres flottants sur 32 bits est décrit dans la figure suivante :
- 
+
 Pour vous aider dans votre travail vous avez à votre disposition le code VHDL décrivant l’opération de multiplication disponible ici ainsi que divers documents disponibles sur internet.
 - Analysez le code VHDL de l’opérateur de multiplication afin de retrouver la description algorithmique de l’opération.
 - Dessinez l’architecture matérielle mise en œuvre dans le code VHDL.
