@@ -10,11 +10,10 @@ using namespace std;
 
 
 int main (int argc, char * argv []){
-	cout << "Initialisation des composants..." << endl;
-	Gene      			gene ("Data_Generator_1");
-	Conversion 			conv ("conversion");
-	ConversionInverse 	iconv("iConversion");
-	Terminal 			term("Terminal_1");
+	Gene							gene ("Data_Generator_1");
+	Conversion				conv ("conversion");
+	ConversionInverse iconv("iConversion");
+	Terminal					term ("Terminal_1");
 
 	cout << "Creation des signaux d'interconnexion..." << endl;
 	sc_fifo<int>  s1(16);
@@ -35,5 +34,5 @@ int main (int argc, char * argv []){
 	sc_start(100,SC_NS);
 	cout << "Fin de la simulation du circuit..." << endl;
 
-    return 0;
+  return 0;
 }

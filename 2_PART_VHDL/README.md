@@ -1,6 +1,12 @@
-# Etude de la complexité des opérateurs arithmétiques
+# Etude de la conversion colorimétrique
 
-## Introduction
+##	INTRODUCTION
+
+Avant de vous lancer dans la modélisation, le raffinement et l’implémentation du système de compression complet, vous allez apprendre à dompter le langage SystemC sur un sous-bloc de la chaîne JPEG. La première partie de votre travail consiste à modéliser et à étudier le premier bloc de la chaîne de compression. Ce bloc de « faible complexité calculatoire » est en charge du changement d'espace colorimétrique.
+
+Le changement d'espace colorimétrique, de l'espace de couleur RGB (rouge, vert, bleu) vers l'espace YCbCr (luminance, chrominances) a pour objectif d'améliorer l'efficacité du processus de compression JPEG. En effet l’œil humain est peu sensible à l’altération de la chrominance.
+
+La conversion entre les 2 espaces colorimétriques est réalisée à l'aide des formules mathématiques fournies ci-dessous :
 
 L'objectif de cette séquence pédagogique est de vous faire prendre conscience des disparités fortes entre les couts d'implantation des différentes opérations arithmétiques que vous utilisez classiquement lorsque vous programmez en C, C++, etc.
 

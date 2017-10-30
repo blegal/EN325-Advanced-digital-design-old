@@ -12,9 +12,9 @@
 void Terminal::do_print()
 {
 	while( true ){
-		int d2 = e.read();
-		int d1 = e.read();
-		int d0 = e.read();
+		int d0 = e.read(); // Red   channel
+		int d1 = e.read(); // Green channel
+		int d2 = e.read(); // Blue  channel
 		cout << "Time = " << sc_time_stamp() << " => Valeurs recues : (R=" << d0 << ", G=" << d1 << ", B=" << d2  << ")" << endl;
 	}
 }

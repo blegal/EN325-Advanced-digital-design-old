@@ -20,7 +20,7 @@
 
 using namespace std;
 
-void RGB_2_YCrCb (int rvb[3], int ycbcr[3]){
+void RGB_2_YCbCr (int rvb[3], int ycbcr[3]){
 
 }
 
