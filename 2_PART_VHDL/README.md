@@ -91,10 +91,14 @@ Maintenant que vous savez comment sont codés les nombres flottants et que vous 
 
 ##	Etape 8 : Amélioration des performances
 
-Les performances des opérateurs flottants peuvent être améliorées en ajoutant par exemple des tranches de pipeline en interne (réduction des chemins critiques). Nous ne réaliserons pas cette étape fastidieuse manuellement dans le cadre de ce TP.
-- Utilisez l’outil Core Generator, afin d’utiliser les composants matériels développés par les ingénieur de chez Xilinx. Développez plusieurs solutions de multiplieurs et d’additionneurs afin de regarder les compromis surface & débits accessibles.
+Les performances des opérateurs flottants peuvent être améliorées en ajoutant par exemple des tranches de pipeline en interne (réduction des chemins critiques). Nous ne réaliserons pas cette étape fastidieuse manuellement dans le cadre de ce TP. Cependant, afin d'observer ce les niveaux de performances que l'on peut atteindre:
+
+- Ouvrez l’outil "IP catalog" présent dans paneau gauche de Vivado. Ce dernier vous permet d'utiliser dans vos developpements les composants matériels développés par les ingénieurs de chez Xilinx.
+- Cherchez l'IP dont le nom contient "float".
+- Développez plusieurs solutions de multiplieurs et d’additionneurs afin de regarder les compromis surface & débits accessibles.
 - Essayer de synthétiser au moins un opérateur afin de valider les estimations de performance fournies.
 - L’utilisation de Core Generator est elle intéressantes vis à vis des opérations décrites manuellement ? Pour quelles caractéristiques ? Quel est le cout d’un tel outil ?
+- Cherchez maintenant un opérateur dont le nom est "multiplieur" dans la liste des IP fournis. Que ce composant vous permet il de faire ?
 
 ##	Etape 4 : Conclusion & synthèse
 

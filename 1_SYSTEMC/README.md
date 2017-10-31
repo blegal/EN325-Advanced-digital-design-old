@@ -2,7 +2,7 @@
 
 ##	Introduction
 
-Avant de vous lancer dans la modélisation, le raffinement et l’implémentation du système de compression complet, vous allez apprendre à dompter le langage SystemC sur un sous-bloc de la chaîne JPEG. La première partie de votre travail consiste à modéliser et à étudier le premier bloc de la chaîne de compression. Ce bloc de « faible complexité calculatoire » est en charge du changement d'espace colorimétrique.
+Avant de vous lancer dans la modélisation, le raffinement et l’implémentation du système de compression complet, vous allez apprendre à dompter le langage SystemC sur un sous-bloc de la chaîne JPEG. La première partie de votre travail consiste à modéliser et à étudier le premier bloc de la chaîne de compression. Ce bloc de « faible complexité calculatoire » est en charge du changement d'espace colorimétrique ([+ d'infos](https://en.wikipedia.org/wiki/YCbCr)).
 
 Le changement d'espace colorimétrique, de l'espace de couleur RGB (rouge, vert, bleu) vers l'espace YCbCr (luminance, chrominances) a pour objectif d'améliorer l'efficacité du processus de compression JPEG. En effet l’œil humain est peu sensible à l’altération de la chrominance.
 
@@ -28,15 +28,13 @@ Dans un premier temps vous allez implanter un modèle système réalisant juste 
 
 ##	Modèle fonctionnel sans SystemC
 
-Vous allez commencer par écrire un programme en C/C++. Ce programme en C/C++ aura pour vocation de vous permettre de tester les 2 fonctions que vous allez écrire.
+Vous allez commencer par écrire un programme en C/C++. Ce programme en C/C++ aura pour vocation de vous permettre de tester les 2 fonctions RGB_2_YCbCr et YCbCr_2_RGB que vous allez écrire. Ces 2 fonctions réaliserons les transformations définies dans les équations fournies précédemment.
 
-Ces 2 fonctions nommées respectivement RGB_2_YCbCr et YCbCr_2_RGB réaliserons les transformations définies dans les équations fournies précédemment.
-
-Afin d'uniformiser vos différents développements et aussi simplifier votre travail durant ce TP, vous utiliserez les prototypes suivants pour vos deux fonctions :
+Afin d'uniformiser vos différents développements et aussi simplifier votre travail durant cette séquence pédagogique, vous utiliserez les prototypes suivants pour vos deux fonctions :
 
 ```
-void RGB_2_YCbCr (int rvb[3], int ycbcr[3]);
-void YCbCr_2_RGB (int ycbcr[3], int rvb[3]);
+void RGB_2_YCbCr (int rvb[3],   int ycbcr[3]);
+void YCbCr_2_RGB (int ycbcr[3], int rvb[3]  );
 ```
 
 **Remarque**
@@ -44,29 +42,34 @@ void YCbCr_2_RGB (int ycbcr[3], int rvb[3]);
 Par convention, les éléments notés rvb[0], rvb[1], rvb[2] désigneront respectivement les canaux rouge, vert et bleu. De manière analogue, les éléments notés ycbcr[0], ycbcr[1], ycbcr[2] désigneront respectivement la luminance Y et les chrominances Cb et Cr.
 
 A partir de ces informations :
-•	Écrivez les deux fonctions et votre programme $main$ dans un
-•	Testez votre programme à l'aide des triplets de données fournis ci-dessous.
 
-	RGB = {  0,   0,   0}
-	RGB = {  0,   0, 128}
-	RGB = {  0, 128,   0}
-	RGB = {128,   0,   0}
+- Écrivez les deux fonctions et votre programme $main$ dans un
+- Testez votre programme à l'aide des triplets de données fournis ci-dessous.
+
+```
+RGB = {  0,   0,   0}
+RGB = {  0,   0, 128}
+RGB = {  0, 128,   0}
+RGB = {128,   0,   0}
+```
 
 Cette première description algorithmique des fonctions de conversion sera le point de départ du raffinement des fonctions mathématiques vers une implantation VHDL.
 
-3.	ENCAPSULATION DANS UN MODELE SYSTEMC
+## Encapsulation dans un modèle SystemC
 
 A partir de maintenant nous allons rentrer dans le vif du sujet. En effet, nous allons utiliser le langage SystemC afin de progressivement transformer vos codes source algorithmiques en codes VHDL synthétisables (ou tout au moins vers des versions s'en rapprochant).
 
 Dans un premier temps, nous allons réécrire votre programme main sous la forme d'un modèle SystemC. Vos fonctions vont être incluses dans un modèle, tout comme la génération des données de test et l'analyse des résultats.
 
 A vous de jouer :
-•	Récupérez les fichiers fournis par votre enseignant [URL].
-•	Décompressez les et modifiez les en ajoutant les fonctions C que vous avez précédemment écrites.
-•	Dessinez le modèle SystemC tel qu'il est décrit.
-•	Expliquez en quoi vous venez de réaliser une encapsulation de vos fonctions.
-•	Compilez votre programme à l'aide du makefile fourni puis lancez la simulation.
+- Récupérez les fichiers fournis par votre enseignant [URL].
+- Décompressez les et modifiez les en ajoutant les fonctions C que vous avez précédemment écrites.
+- Dessinez le modèle SystemC tel qu'il est décrit.
+- Expliquez en quoi vous venez de réaliser une encapsulation de vos fonctions.
+- Compilez votre programme à l'aide du makefile fourni puis lancez la simulation.
+
 Vous venez de simuler votre premier système décrit en SystemC. Toutefois comme vous venez de vous en rendre compte le système que nous avons décrit n'est pas très pratique pour valider le fonctionnement de vos fonctions.
+
 4.	MODELISATION DU SYSTEME D'ACQUISITION DES IMAGES
 Afin de se rapprocher de la modélisation d'un système réel, nous allons modifier notre description SystemC : nous allons maintenant travailler sur des images (flux de données) réelles. Pour faire évoluer votre modèle, il est seulement nécessaire de remplacer le générateur de données et l'analyseur présent en bout de chaine.
 A vous de jouer :
