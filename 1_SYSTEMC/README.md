@@ -28,7 +28,7 @@ Dans un premier temps vous allez implanter un modèle système réalisant juste 
 
 ##	Modèle fonctionnel sans SystemC
 
-Vous allez commencer par écrire un programme en C/C++. Ce programme en C/C++ aura pour vocation de vous permettre de tester les 2 fonctions RGB_2_YCbCr et YCbCr_2_RGB que vous allez écrire. Ces 2 fonctions réaliserons les transformations définies dans les équations fournies précédemment.
+Vous allez commencer par écrire un programme en C/C++. Ce programme en C/C++ aura pour vocation de vous permettre de tester les 2 fonctions *RGB_2_YCbCr* et *YCbCr_2_RGB* que vous allez écrire. Ces 2 fonctions réaliserons les transformations définies dans les équations fournies précédemment.
 
 Afin d'uniformiser vos différents développements et aussi simplifier votre travail durant cette séquence pédagogique, vous utiliserez les prototypes suivants pour vos deux fonctions :
 
@@ -39,10 +39,11 @@ void YCbCr_2_RGB (int ycbcr[3], int rvb[3]  );
 
 **Remarque**
 
-Par convention, les éléments notés rvb[0], rvb[1], rvb[2] désigneront respectivement les canaux rouge, vert et bleu. De manière analogue, les éléments notés ycbcr[0], ycbcr[1], ycbcr[2] désigneront respectivement la luminance Y et les chrominances Cb et Cr.
+Par convention, les éléments notés rvb[0], rvb[1], rvb[2] désigneront respectivement les canaux *rouge*, *vert* et *bleu*. De manière analogue, les éléments notés ycbcr[0], ycbcr[1], ycbcr[2] désigneront respectivement la luminance *Y* et les chrominances *Cb* et *Cr*.
 
-A partir de ces informations :
+**A partir de ces informations :**
 
+- Ouvrez le fichier
 - Écrivez les deux fonctions et votre programme $main$ dans un
 - Testez votre programme à l'aide des triplets de données fournis ci-dessous.
 
@@ -70,17 +71,22 @@ A vous de jouer :
 
 Vous venez de simuler votre premier système décrit en SystemC. Toutefois comme vous venez de vous en rendre compte le système que nous avons décrit n'est pas très pratique pour valider le fonctionnement de vos fonctions.
 
-4.	MODELISATION DU SYSTEME D'ACQUISITION DES IMAGES
+##	Modélisation du système d'acquisition des images
+
 Afin de se rapprocher de la modélisation d'un système réel, nous allons modifier notre description SystemC : nous allons maintenant travailler sur des images (flux de données) réelles. Pour faire évoluer votre modèle, il est seulement nécessaire de remplacer le générateur de données et l'analyseur présent en bout de chaine.
+
 A vous de jouer :
-•	Copiez les fichiers cpp que vous avez modifiez à la question précédente dans le répertoire relatif à cette question.
-•	Ouvrez les modules en charge de la génération et de l'analyse des données.
-•	Dessinez le modèle SystemC tel qu'il est actuellement décrit.
-•	Compilez le nouveau modèle à l'aide du makefile fourni puis lancez la simulation.
-•	Vérifiez que l'image générée est conforme.
-•	Analysez les images présentant les différences entre les images et expliquez les.
+
+-	Copiez les fichiers cpp que vous avez modifiez à la question précédente dans le répertoire relatif à cette question.
+-	Ouvrez les modules en charge de la génération et de l'analyse des données.
+-	Dessinez le modèle SystemC tel qu'il est actuellement décrit.
+-	Compilez le nouveau modèle à l'aide du makefile fourni puis lancez la simulation.
+-	Vérifiez que l'image générée est conforme.
+-	Analysez les images présentant les différences entre les images et expliquez les.
 Vous aurez remarqué à la fin de la simulation qu'un nombre important d'informations est affiché dans le terminal. Ces informations sont des métriques mathématiques permettant d'évaluer les dégradations induites par vos transformations sur l'image de sortie. Cela vous permettra dans les questions suivantes d'évaluer la pertinence de vos décisions (ou les bugs éventuels).
-5.	RAFFINEMENT DES INTERFACES DE COMMUNICATION (1)
+
+##	Raffinement des interfaces de communication (1)
+
 Jusqu'à maintenant les communications au sein du système se sont fait en manipulant des données sur 32 bits (int). Toutefois ce format de données n'est pas celui utilisé dans le monde réel. En effet les informations de type RGB et YCbCr sont codées sur 8 bits.
 Vous allez donc modifier les modèles SystemC de la question précédente afin refléter plus efficacement le comportement réel du système. Pour cela, vous pourrez utiliser à votre convenance soit le type unsigned char soit la classe SystemC prévue à cet effet sc_uint<T>.
 A vous de jouer :
@@ -93,7 +99,9 @@ A vous de rejouer :
 •	Compilez le modèle corrigé puis lancez la simulation.
 •	Vérifiez que l'image générée est maintenant conforme.
 Comme vous venez de le remarquer une modification insignifiante peut relever des problèmes réels. Imaginez la difficulté pour identifier et corriger ce genre de problème lorsque l'on se trouve en VHDL et que l'on manipule des vecteurs de bits.
-6.	CONCLUSION
+
+##	Conclusion
+
 Maintenant que vous avez un modèle fonctionnel. Vous allez remplacer les calculs flottants réalisés dans les modules de conversion par des calculs en virgule fixe. Cependant avant d’entreprendre cette tache au combien fastidieuse, vous allez faire un peu de VHDL de manière à vous convaincre de l’intérêt de cette transformation.
 
 # Opérateurs flottants sur cible FPGA
@@ -101,74 +109,90 @@ Maintenant que vous avez un modèle fonctionnel. Vous allez remplacer les calcul
 Allez faire un tour là...
 
 
-Raffinement de la conversion colorimétrique
+# Raffinement de la conversion colorimétrique
 
+## Introduction
 
-1.	INTRODUCTION
 Maintenant que vous avez pleinement conscience du cout des opérateurs arithmétiques flottants et entiers sur cible FPGA, et indirectement sur cibl ASIC vous allez prendre « plaisir » à mettre en œuvre le codage en virgule fixe…
-2.	TRANSFORMATION EN VIRGULE FIXE DES CALCULS
+
+## Transformation en virgule fixe des calculs
+
 Nous souhaitons concevoir une architecture matérielle permettant de réaliser la conversion RGB_2_YCbCr. Dans des systèmes ou les calculs flottants sont complexes à implanter et/ou onéreux. Pour cette raison, ces calculs manipulant des données flottantes doivent être transformés en calculs en virgule fixe. Vous allez donc procéder à cette transformation. On limitera cette étude à la fonction RGB_2_YCbCr.
 Pour simplifier cette tache ardue, le langage SystemC propose un ensemble de classes dédiées à ce raffinement. Pour mener à bien votre tache, vous disposerez des classes suivantes :
 
-	sc_fixed <wl, iwl, q_mode, o_mode> var_signed;
-	sc_ufixed<wl, iwl, q_mode, o_mode> var_unsigned;
+```
+sc_fixed <wl, iwl, q_mode, o_mode> var_signed;
+sc_ufixed<wl, iwl, q_mode, o_mode> var_unsigned;
 
-	// EXAMPLE D'UTILISATION
-	float adder(float a, float b)
-	{
-		sc_fixed<4,2,SC_RND,SC_WRAP> Inputa = a;
-		sc_fixed<6,3,SC_RND,SC_WRAP> Inputb = b;
-		sc_fixed<7,4,SC_RND,SC_WRAP> Output;
-		Output = (Inputa + Inputb);
-		return Output;
-	}
+// EXAMPLE D'UTILISATION
+float adder(float a, float b)
+{
+	sc_fixed<4,2,SC_RND,SC_WRAP> Inputa = a;
+	sc_fixed<6,3,SC_RND,SC_WRAP> Inputb = b;
+	sc_fixed<7,4,SC_RND,SC_WRAP> Output;
+	Output = (Inputa + Inputb);
+	return Output;
+}
+```
 
 Les paramètres du template de classe ont les significations suivantes :
-•	wl : nombre total de bits dans le mot;
-•	iwl : nombre de bits alloué à la partie entière;
-•	q_mode : mode de quantification;
-•	o_mode : gestion de la saturation en cas de dépassement.
+-	wl : nombre total de bits dans le mot;
+-	iwl : nombre de bits alloué à la partie entière;
+-	q_mode : mode de quantification;
+-	o_mode : gestion de la saturation en cas de dépassement.
+
 Afin de limiter la difficulté de cette tache que vous effectuez pour la première fois, nous considérons que tous les coefficients fractionnaires seront codés de la manière uniforme. Votre objectif est de trouver le bon format pour les coefficients et les opérations afin de limiter le bruit de calcul.
-•	Demandez des explications à votre enseignant si vous ne maîtriser pas les concepts de codage en virgule fixe.
-•	Dupliquez le répertoire de lié à la question précédente et renommez le en Part1_Question_5.
-•	Modifier la description de la fonction RGB_2_YCbCr pour la transformer en virgule fixe.
-•	Compilez le modèle puis lancez la simulation.
-•	Faites plusieurs tentatives afin de trouver un format permettant de limiter les pertes. Plus le format de codage est faible moins l'architecture matérielle sera onéreuse.
+-	Demandez des explications à votre enseignant si vous ne maîtriser pas les concepts de codage en virgule fixe.
+-	Dupliquez le répertoire de lié à la question précédente et renommez le en Part1_Question_5.
+-	Modifier la description de la fonction RGB_2_YCbCr pour la transformer en virgule fixe.
+-	Compilez le modèle puis lancez la simulation.
+-	Faites plusieurs tentatives afin de trouver un format permettant de limiter les pertes. Plus le format de codage est faible moins l'architecture matérielle sera onéreuse.
 Vous avez du regarder les métriques mathématiques afin de vous guider lors de l'étape de raffinement. Toutefois, la qualité visuelle n'évolue pas de manière similaire à ces valeurs.
-•	Recommencer votre étude en considérant votre perception visuelle. Jusqu'à combien de bits pouvez-vous descendre avant de percevoir visuellement une dégradation ?
+-	Recommencer votre étude en considérant votre perception visuelle. Jusqu'à combien de bits pouvez-vous descendre avant de percevoir visuellement une dégradation ?
 Vous venez de dimensionner la taille des données et des opérations contenues votre algorithme. Comme vous venez le constater un dimensionnement bien réalisé vous permet de gagner sur le cout silicium de votre architecture. Une fois de plus vous remarquerez qu'une telle étude est dure à réaliser en VHDL.
-3.	VIRGULE FIXE SANS UTILISER LES CLASSES SYSTEMC
-Les classes sc_fixed et sc_ufixed sont très pratiques mais vous serez incapable d'écrire le VHDL équivalent. Afin de simplifier cette tache (l'écriture du VHDL) vous allez traduire votre codage en virgule fixe utilisant les classes sc_fixed par du code manipulant des sc_int<T> ou sc_uint<T>. Ces classes vous permettent d'avoir un niveau de description identique à celui que vous avez avec les type SIGNED et UNSIGNED en VHDL.
-•	Dupliquez le répertoire de lié à la question précédente et renommez le en Part1_Question_6.
-•	Modifiez la description de la fonction RGB_2_YCbCr pour ne plus utiliser que des type sc_int<T> et sc_uint<T>.
-•	Compilez le modèle puis lancez la simulation.
-•	Validez les performances de votre modèle par rapport à celui qui utilisait des sc_fixed et sc_ufixed.
+
+##	Virgule fixe sans utiliser les classes SystemC
+
+Les classes sc_fixed et sc_ufixed sont très pratiques mais vous serez incapable d'écrire le VHDL équivalent. Afin de simplifier cette tache (l'écriture du VHDL) vous allez traduire votre codage en virgule fixe utilisant les classes **sc_fixed** par du code manipulant des **sc_int<T>** ou **sc_uint<T>**. Ces classes vous permettent d'avoir un niveau de description identique à celui que vous avez avec les type SIGNED et UNSIGNED en VHDL.
+
+Pour cela:
+-	Dupliquez le répertoire de lié à la question précédente et renommez le en Part1_Question_6.
+-	Modifiez la description de la fonction RGB_2_YCbCr pour ne plus utiliser que des type sc_int<T> et sc_uint<T>.
+-	Compilez le modèle puis lancez la simulation.
+-	Validez les performances de votre modèle par rapport à celui qui utilisait des sc_fixed et sc_ufixed.
 Vous avez maintenant un code VHDL dont le niveau d'abstraction est identique a celui du VHDL. Vous remarquerez qu'une traduction de l'un à l'autre n'est pas très complexe.
+
 4.	RAFFINEMENT DES INTERFACES AU CYCLE-PRES
+
 Maintenant que le comportement interne du composant a été étudié, nous allons raffiner les interfaces de communication du module.
+
 Le système dans lequel votre composant sera intégré produit un triplet RGB tout les 30 ns. Ces données sont produites et transmises en même temps à votre composant. Ces données seront valides 10 ns et durant ce temps, un signal data_valid sera positionné à 1 (et 0 les 20 ns restantes).
+
 Le comportement des sorties de votre composant devra être similaire: les sorties se feront sur 24 bits durant 10 ns. Un signal out_valid validera la présence de nouvelles sorties durant 10 ns.
+
 Le temps de calcul entre la réception des données dans votre composant et la production des sorties sera fixé à 20 ns.
 Afin de ne pas modifier le générateur de données ni le module de conversion YCbCr_2_RGB, la méthode la plus simple consiste à développer 2 wrappers permettant de transformer les liens actuels au protocole défini ci-dessus. De plus pour synchroniser l'ensemble des composants, une horloge de type sc_clock sera nécessaire.
-•	Dessinez le système que vous devez modéliser.
-•	Dupliquez le répertoire de lié à la question précédente et renommez le en Part1_Question_7.
-•	Créez les deux modules d'interfaçage en charge de la traduction du protocole ``fifo'' en protocole cycle près.
-•	Modifiez le module RGB_2_YCbCr afin de le rendre uniquement sensible à l'horloge (VHDL-like) et implanter le comportement décrit ci-dessus.
-•	Compilez le modèle puis lancez la simulation.
-•	Valider le fonctionnement de votre modèle.
+
+Maintenant:
+-	Dessinez le système que vous devez modéliser.
+-	Dupliquez le répertoire de lié à la question précédente et renommez le en Part1_Question_7.
+-	Créez les deux modules d'interfaçage en charge de la traduction du protocole **FIFO** en protocole cycle près.
+-	Modifiez le module **RGB_2_YCbCr** afin de le rendre uniquement sensible à l'horloge (VHDL-like) et implanter le comportement décrit ci-dessus.
+-	Compilez le modèle puis lancez la simulation.
+-	Valider le fonctionnement de votre modèle.
 Vous venez de valider fonctionnellement votre modèle. Cette validation vous a permis de valider la fonctionnalité du modèle, mais en aucun cas le comportement temporel des composants. Afin de valider le comportement temporel du système, le plus simple est d'étudier les signaux d'entrée et de sortie de votre module.
-•	Instrumentez votre modèle à l'aide des fonctions SystemC spécialisées dans l'extraction de chronogrammes (sc_trace, etc.).
-•	Compilez le modèle puis lancez la simulation.
-•	Ouvrez le fichier contenant les chronogrammes à l'aide de l'outil nommé gtkwave.
+-	Instrumentez votre modèle à l'aide des fonctions SystemC spécialisées dans l'extraction de chronogrammes (sc_trace, etc.).
+-	Compilez le modèle puis lancez la simulation.
+-	Ouvrez le fichier contenant les chronogrammes à l'aide de l'outil nommé gtkwave.
  
 
-5
-De SystemC à l’implantation VHDL
+# De SystemC à l’implantation VHDL
 
 
 1.	INTRODUCTION
 
-2.	EVALUATION ET EXPLOITATION DE LA DYNAMIQUE DES DONNEES ET DES CALCULS
+2.	EVALUATION ET EXPLOITATION DE LA DYNAMIQUE DES DONNEES ET
+DES CALCULS
 Afin d’apporter une réponse globale à la gestion de la dynamique des données au sein des architectures générées, nous avons décidé de modifier l’ensemble du processus de synthèse d’architectures afin tout d’abord d’estimer la dynamique des calculs et de données avant d’optimiser la génération de l’architecture. L’étape d’estimation de la dynamique des données à partir des informations fournies par l’utilisateur est détaillée dans [REF]. Cette dernière permet à de réaliser une évaluation de la dynamique des données et des calcul à partir de la dynamique des entrées de l’algorithme et d’une bibliothèque spécifiant le comportement des opérations usuelles. La dynamique calculée par une approche basée sur la propagation de l’espace de variation pour chaque opération de la description algorithmique assure l’absence de débordement lors de l’exécution.
 
 3.	CONCEPTION DU CIRCUIT EN VHDL
@@ -216,8 +240,8 @@ Afin de compiler et de simuler vos modules SystemC en même temps que votre modu
 > run 100 ms
  
 
-6
-Validation fonctionnelle du matériel (VHDL)
+
+# Validation fonctionnelle du matériel (VHDL)
 
 5.	INTRODUCTION
 
