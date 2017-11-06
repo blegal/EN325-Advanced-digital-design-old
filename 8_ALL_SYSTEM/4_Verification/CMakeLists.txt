@@ -14,12 +14,6 @@ SET (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -L/opt/local/lib -lopencv
 SET (SOURCE_FILES \\
         ./src/DataSource/DataSource.cpp \\
         ./src/DataSink/DataSink.cpp \\
-        ./src/RGB2YUV/RGB2YUV.cpp \\
-        ./src/DCT2d/DCT2d.cpp \\
-        ./src/Serializer/Serializer.cpp \\
-        ./src/ZigZag/ZigZag.cpp \\
-        ./src/Quantizer/Quantizer.cpp \\
-        ./src/Encoder/Encoder.cpp \\
         ./src/Encoder/HardEncoder.cpp \\
         ./src/main.cpp)
 

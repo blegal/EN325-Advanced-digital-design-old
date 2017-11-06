@@ -1,6 +1,6 @@
 # Etude de la conversion colorimétrique
 
-##	INTRODUCTION
+##	Introduction
 
 Avant de vous lancer dans la modélisation, le raffinement et l’implémentation du système de compression complet, vous allez apprendre à dompter le langage SystemC sur un sous-bloc de la chaîne JPEG. La première partie de votre travail consiste à modéliser et à étudier le premier bloc de la chaîne de compression. Ce bloc de « faible complexité calculatoire » est en charge du changement d'espace colorimétrique.
 
@@ -14,7 +14,7 @@ Afin de vous convaincre des performances calamiteuses par exemple du format de c
 
 L’évaluation que vous allez effectuer sera basée sur la technologie FPGA. La famille Virtex-7 (XXXX) de Xilinx sera considérée et l’outil de synthèse employé sera Xilinx Vivado.
 
-## Etape 1 : Addition de nombres entiers
+## Q1. Addition de nombres entiers
 
 La première série d’expériences va cibler l’évaluation des caractéristiques des opérations d’addition entre des nombres entiers signés. Pour cela, vous allez utiliser un additionneur combinatoire (aucun registre ne sera ajouté en amont et en aval de l’opérateur).
 
@@ -32,7 +32,7 @@ A partir de ces informations :
 
 Notez dans un tableau les résultats de synthèse obtenus pour chaque largeur de mots. Vous pouvez représenter les résultats sous forme de courbes.
 
-##	Etape 2 : Multiplication de nombres entiers
+## Q2. Multiplication de nombres entiers
 
 L’opérateur d’addition est l’opérateur matériel le plus simple. Dans la majorité des applications, d’autres types d’opérations sont nécessaires. Vous allez maintenant étudier le second opérateur le plus employé : la multiplication. Comme cela a été réalisé dans la première partie, vous allez étudier un multiplieur combinatoire manipulant des nombres entiers signés.
 
@@ -49,7 +49,7 @@ A partir de ces informations :
 - Comparez les résultats que vous venez d’obtenir et comparez les avec ceux obtenus sans blocs DSP.
 
 
-##	Etape 3 : Multiplication d'un nombre par une constante
+## Q3. Multiplication d'un nombre par une constante
 
 Vous allez maintenant étudier un cas particulier. Vous allez implanter quelques multiplications par des valeurs constantes afin de voir comment l’outil de synthèse les gère.
 
@@ -58,7 +58,7 @@ Vous allez maintenant étudier un cas particulier. Vous allez implanter quelques
 - Refaites les mêmes opérations lorsque la constante vaut 261.
 
 
-##	Etape 4 : Division de nombres entiers
+## Q4. Division de nombres entiers
 
 Vous allez terminer l’étude des opérateurs entiers avec l’étude de l’opérateur de division. Cette étude se limitera à l’opérateur de division 32 bits manipulant des données non signées.
 - Dessinez la structure de deux étages « élémentaires » de l’opérateur de division.
@@ -66,12 +66,12 @@ Vous allez terminer l’étude des opérateurs entiers avec l’étude de l’op
 - Réalisez la synthèse logique du module de division. Interprétez le résultat obtenu.
 
 
-##	Etape 5 : Synthèse préliminaire des données récoltées
+## Q5. Synthèse préliminaire des données récoltées
 
 Vous venez de récolter un nombre important de mesures. Il est temps d’en faire une synthèse. Positionnez les informations de complexité, latence des différents opérateurs les uns par rapport aux autres. Essayer d’en tirer des enseignements.
 
 
-##	Etape 6 : Multiplication de nombres flottants (32 bits)
+## Q6. Multiplication de nombres flottants (32 bits)
 
 Maintenant que vous maitrisez l’implantation des opérations entières, vous allez étudier les opérateurs flottants. Pour commencer, vous allez essayer de comprendre la manière dont est réalisé une multiplication flottante entre deux nombres. Le format de codage des nombres flottants sur 32 bits est décrit dans la figure suivante :
 
@@ -81,7 +81,7 @@ Pour vous aider dans votre travail vous avez à votre disposition le code VHDL d
 - Faites une synthèse du multiplieur flottant afin d’estimer ses performances (slices, chemin critique).
 - Comparez les performances relevées avec celles des multiplieurs entiers.
 
-##	Etape 7 : Addition de nombres flottants (32 bits)
+## Q7. : Addition de nombres flottants (32 bits)
 
 Maintenant que vous savez comment sont codés les nombres flottants et que vous maitrisez leur multiplication, nous allons maintenant étudiez le processus d’addition. Téléchargez le code VHDL décrivant l’opération d’addition disponible ici et retournez vous documenter sur le principe de base de l’adition flottante par exemple ici ou bien là (cours de guyot).
 - Analysez le code VHDL de l’opérateur de multiplication afin de retrouver la description algorithmique de l’opération.
@@ -89,7 +89,7 @@ Maintenant que vous savez comment sont codés les nombres flottants et que vous 
 - Faites une synthèse de l’additionneur flottant afin d’extraire ses caractéristiques.
 - Comparez les performances relevées avec celles obtenues précédemment.
 
-##	Etape 8 : Amélioration des performances
+## Q8. Amélioration des performances
 
 Les performances des opérateurs flottants peuvent être améliorées en ajoutant par exemple des tranches de pipeline en interne (réduction des chemins critiques). Nous ne réaliserons pas cette étape fastidieuse manuellement dans le cadre de ce TP. Cependant, afin d'observer ce les niveaux de performances que l'on peut atteindre:
 
@@ -100,6 +100,6 @@ Les performances des opérateurs flottants peuvent être améliorées en ajoutan
 - L’utilisation de Core Generator est elle intéressantes vis à vis des opérations décrites manuellement ? Pour quelles caractéristiques ? Quel est le cout d’un tel outil ?
 - Cherchez maintenant un opérateur dont le nom est "multiplieur" dans la liste des IP fournis. Que ce composant vous permet il de faire ?
 
-##	Etape 4 : Conclusion & synthèse
+## Conclusion & synthèse
 
 Cette séquence pédagogique est maintenant terminée. Il ne vous reste plus qu’à comparer les différentes solutions que vous avez expérimentées dans le cadre de ce TP.

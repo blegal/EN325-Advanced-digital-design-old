@@ -1,5 +1,4 @@
 #include "./DataSource/DataSource.h"
-#include "./Encoder/Encoder.h"
 #include "./Encoder/HardEncoder.h"
 #include "./DataSink/DataSink.h"
 
@@ -42,11 +41,7 @@ int main (int argc, char * argv []){
 	}
 
 	DataSource  src ("DataSource", filename);
-#if 0
-    Encoder     enc ("Encoder" );
-#else
     HardEncoder enc ("Encoder" );
-#endif
 	DataSink    dst ("DataSink");
 
 	cout << "Mapping des composants..." << endl;

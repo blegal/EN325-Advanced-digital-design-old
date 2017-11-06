@@ -54,8 +54,11 @@ void HardEncoder::do_action()
     vs.push_back("/dev/cu.usbserial-210274533335A");
     vs.push_back("/dev/cu.usbserial-210274531985B");
     vs.push_back("/dev/cu.usbserial-210274531985A");
+    
+    vs.push_back("/dev/cu.usbserial-210274532494B");
+    vs.push_back("/dev/cu.usbserial-210274532494A");
 
-    for (int i = 0; i < vs.size(); i += 1) {
+    for (unsigned long i = 0; i < vs.size(); i += 1) {
         std::string s = vs.at(i);
         fileDescriptor = open(s.c_str(), O_RDWR | O_NOCTTY);
         if (fileDescriptor != -1)
@@ -98,20 +101,21 @@ void HardEncoder::do_action()
     tcsetattr(fileDescriptor, TCSAFLUSH, &t); // envoie le tout au driver
 #endif
 
-    int cpt = 0;
     while( true ){
-//        printf("Processing MB : %d\\n", cpt++);
+        
         char ibuffer[3 * 64];
         for(int i = 0; i < 3 * 64; i += 1) ibuffer[i] = e.read();
+
         int wBytes = write( fileDescriptor, ibuffer, 3 * 64 * sizeof(unsigned char) );
         assert( wBytes == (3 * 64 * sizeof(unsigned char)) );
 
         signed short obuffer[3 * 64];
         int rBytes = read( fileDescriptor, obuffer, 3 * 64 * sizeof(signed short) );
         assert( rBytes == (3 * 64 * sizeof(signed short)) );
-        for(int i = 0; i < 3 * 64; i += 1){
+        
+        for(int i = 0; i < 3 * 64; i += 1)
             obuffer[i] = ((obuffer[i] & 0xFF) << 8) | ((obuffer[i] >> 8) & 0xFF);
-        }
+
         for(int i = 0; i < 3 * 64; i += 1) s.write( obuffer[i] );
     }
 }

@@ -11,11 +11,6 @@
 
 #include "systemc.h"
 
-#include "../RGB2YUV/RGB2YUV.h"
-#include "../Serializer/Serializer.h"
-#include "../DCT2d/DCT2d.h"
-#include "../Quantizer/Quantizer.h"
-#include "../ZigZag/ZigZag.h"
 
 SC_MODULE(HardEncoder)
 {
