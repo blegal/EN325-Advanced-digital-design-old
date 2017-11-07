@@ -42,16 +42,28 @@ Maintenant à vous de jouer :
 
 - Dessinez un schéma bloc du système que vous allez concevoir.
 - Ecrivez le code VHDL.
-- Validez le comportement de votre code VHDL à l'aide d'un testbench.
+- **Validez** le comportement de votre code VHDL à l'aide d'un testbench.
+
+Une fois que votre code VHDL a été validé fonctionnellement et temporellement en simulation grace à Vivado, vous pouvez passer à l'étape suivante.
 
 # Q2. Simulation conjointe avec ModelSim
 
-Le langage SystemC couplé avec l'utilisation de l'outil Modelsim vous permet de simuler des modèles contenant à la fois des modules décrits en SystemC et en VHDL. Vous allez exploiter cette capacité afin de valider de manière plus exhaustive le comportement de votre entité VHDL.
-Cette possibilité de mixer des langages de modélisation et de description va vous permettre de continuer a vérifier votre composant VHDL de la même manière que précédemment. Ainsi on pourra vérifier son fonctionnement en regardant l'image générée. Cette approche est bien plus efficace et agréable que celle consistant à observer des dizaines ou des centaines de signaux dans l'interface de Modelsim.
-•	Ouvrez le projet Modelsim fourni par votre enseignant.
-•	Validez le comportement de votre code VHDL à l'aide d'un testbench.
-•	Mettez votre fichier VHDL sur une clef USB et allez co-simuler votre système sur l’ordinateur de votre enseignant.
+Les tests que vous avez appliqué sur votre composant VHDL sont minimalistes et ne permettent pas vraiment de garantir le bon fonctionnement de votre circuit. L'idéal aurait été pouvoir rejouter les tests précédents pour garantir la bonne fonctionnalité.
+
+Le langage SystemC couplé avec l'utilisation de l'outil Modelsim vous permet de simuler des systèmes contenant à la fois des modules décrits en SystemC et en VHDL :-) Vous allez donc exploiter cette capacité afin de valider de manière plus exhaustive le comportement de votre module VHDL.
+
+Cette possibilité de mixer des langages de modélisation et de description va vous permettre de continuer a vérifier votre composant VHDL de la même manière que précédemment. Ainsi on pourra vérifier son fonctionnement en regardant l'image générée. Cette approche est bien plus efficace et agréable que celle consistant à observer des dizaines ou des centaines de signaux dans l'interface de Vivado...
+
+** NOT YET POSSIBLE !!! **
+-	Ouvrez le projet Modelsim fourni par votre enseignant.
+-	Validez le comportement de votre code VHDL à l'aide d'un testbench.
+
+** THUS **
+
+-	Envoyer votre fichier VHDL par mail à votre enseignant. Ce dernier ese chargera de réaliser la co-simulation avec vous.
+
 Co-simulation
+
 Afin de compiler et de simuler vos modules SystemC en même temps que votre module VHDL, vous prendrez soin d’effectuer les actions suivantes :
 
 ```
