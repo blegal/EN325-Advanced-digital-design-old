@@ -21,11 +21,11 @@ Afin de mieux appréhender ce type de méthodologie, vous allez dans un premier 
 
 La première partie du TP vise à vous familiariser avec l’outil Vivado de Xilinx. Vous implanterez votre premier circuit RTL décrit en langage C/C++ et étudierez l’impact des pragma supportés par l’outil sur les architectures générées. Dans un premier temps, réalisez les étapes suivantes :
 
-- Lancez l’outil « Vivado HLS 2015.2 » via son raccourci sous "Applications/Autres" dans Gnome.
-- Créez un nouveau projet « File : New project ». Nommez ce premier projet « test_tp_3a_se ». N’ajoutez pas de fichiers dans le projet pour le moment. Dans le dernier onglet lorsque vous devez indiquer la cible, utiliser le sous-menu « Boards » puis « ZedBoard… ». Valider et créez le projet vide.
-- Maintenant créez et ajouter deux fichiers dans votre projets. Pour cela cliquez sur « source » dans le panel de gauche et faites « new file ». Créez un fichier nommé « my_module.cpp » et un autre nommé « my_module.h ». Vous prendrez soin de ranger ces fichiers dans un répertoire nommé « src ».
-- Cliquez sur votre projet à l’aide du bouton droit de la souris (dans le panneau de gauche) et sélectionnez « project settings » Dans le panneau nommé « synthesis », indiquez que le nom du module SystemC à implanter en VHDL est « my_module ».
-- Décrivez en SystemC un module nommé « my_module ». Ce module sera compose d’une entrée “x” de type sc_fifo, une sortie “y” de type sc_fifo et d’une entrée de type sc_in<bool> pour l’horloge “clk”.
+- Lancez l’outil « Vivado HLS 2018.2 »
+- Créez un nouveau projet « File : New project ». Nommez ce premier projet « test_tp_3a_se ». N’ajoutez pas de fichiers dans le projet pour le moment. Dans le dernier onglet lorsque vous devez indiquer la cible, utiliser le sous-menu « Boards » puis « Kintex-7 KC705 ». Valider et créez le projet vide.
+- Maintenant commencez par ajouter 2 fichiers dans votre projets. Pour cela cliquez sur l'item « **source** » dans le panneau de gauche et faites « **Add files** ». Cherchez les fichiers nommés « **my_module.cpp** » et « **my_module.h** ».
+- Cliquez sur votre projet à l’aide du bouton droit de la souris (dans le panneau de gauche) et sélectionnez « **project settings** » Dans le panneau nommé « **synthesis** », indiquez que le nom du module SystemC à implanter en VHDL est « **my_module** ».
+- Décrivez en SystemC un module nommé « **my_module** ». Ce module sera compose d’une entrée “**x**” de type **sc_fifo**, une sortie “**y**” de type **sc_fifo** et d’une entrée de type **sc_in<bool>** pour l’horloge “**clk**”.
 - Implantez le comportement du module (Y = 1000 / (2 * (X * X) – 7 * X + 1)) à l’aide d’un SC_CTHREAD sensible au front montant de l’horloge. Vous prendrez soin de déclarer « x » et « y » comme des données entières (int).
 - Appuyez sur le bouton « Run C synthesis » afin de vérifier que votre code SystemC est syntaxiquement correct.
 - Avant de générer l’architecture VHDL implantant le comportement décrit, vous allez vérifier le bon fonctionnement du code logiciel que vous avez écrit.  Pour cela, récupérez les fichiers qui décrivant un testbench ici. Ajouter ces fichiers dans votre projet dans la section testbench. Enfin, lancez la simulation de votre système et valider les valeurs obtenues en sortie.
