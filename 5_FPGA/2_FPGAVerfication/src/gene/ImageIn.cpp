@@ -24,6 +24,7 @@ void ImageIn::do_gen()           // process
 	int hauteur = img->size();
 
 	for(int y=0; y<hauteur; y++){
+		printf("(II) processing %4d / %4d\n", y, hauteur);
 		for(int x=0; x<largeur; x++){
 			CPixel *p1 = img->getPixel(x, y);
 			s.write  ( (unsigned char)p1->Red()   );

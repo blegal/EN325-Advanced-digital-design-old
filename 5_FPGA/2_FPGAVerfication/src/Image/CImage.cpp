@@ -11,7 +11,7 @@
 
 CImage::CImage(int hauteur, int largeur){
 	taille = hauteur;
-	liste = (CLigne**)new int[taille];
+	liste = (CLigne**)new CLigne*[taille];
 	for(int i=0; i<taille; i++){
 		liste[i] = new CLigne(largeur);
 	}

@@ -1,0 +1,147 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2017.2 (lin64) Build 1909853 Thu Jun 15 18:39:10 MDT 2017
+| Date         : Tue Nov  7 08:26:30 2017
+| Host         : legal-virtual-machine running 64-bit Ubuntu 17.04
+| Command      : report_control_sets -verbose -file top_uart_control_sets_placed.rpt
+| Design       : top_uart
+| Device       : xc7a100t
+-------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    78 |
+| Unused register locations in slices containing registers |    33 |
++----------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               6 |            5 |
+| No           | No                    | Yes                    |               6 |            4 |
+| No           | Yes                   | No                     |              50 |           33 |
+| Yes          | No                    | No                     |              16 |            7 |
+| Yes          | No                    | Yes                    |              48 |           19 |
+| Yes          | Yes                   | No                     |              57 |           19 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++----------------+------------------------------------------------+---------------------------------------------+------------------+----------------+
+|  Clock Signal  |                  Enable Signal                 |               Set/Reset Signal              | Slice Load Count | Bel Load Count |
++----------------+------------------------------------------------+---------------------------------------------+------------------+----------------+
+|  CLK_IBUF_BUFG | snd/transmitter/shift[0]_i_1_n_0               | snd/transmitter/write_index_reg[1]_rep__1_0 |                1 |              1 |
+|  CLK_IBUF_BUFG | rcv/receiver/nbbits                            | rcv/receiver/nbbits[3]_i_1_n_0              |                1 |              4 |
+|  CLK_IBUF_BUFG |                                                | snd/transmitter/cnt[9]_i_1__0_n_0           |                3 |              5 |
+|  CLK_IBUF_BUFG |                                                |                                             |                5 |              6 |
+|  CLK_IBUF_BUFG | snd/transmitter/shift1_in[0]                   | snd/transmitter/write_index_reg[1]_rep__1_0 |                4 |              7 |
+|  CLK_IBUF_BUFG | rcv/receiver/dat[7]_i_1_n_0                    |                                             |                3 |              8 |
+|  CLK_IBUF_BUFG | rcv/receiver/shift0                            |                                             |                4 |              8 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3776_3839_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_192_255_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_576_639_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_512_575_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_448_511_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3968_4031_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3904_3967_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_384_447_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3840_3903_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_640_703_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3712_3775_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3648_3711_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3584_3647_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3520_3583_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3456_3519_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3392_3455_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_960_1023_0_2_i_1_n_0  |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2304_2367_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1920_1983_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1216_1279_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1344_1407_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1088_1151_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2112_2175_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3072_3135_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1280_1343_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3200_3263_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_896_959_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_832_895_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_768_831_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_704_767_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_64_127_0_2_i_1_n_0    |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3136_3199_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_4032_4095_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3328_3391_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_320_383_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1024_1087_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1408_1471_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_128_191_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_256_319_0_2_i_1_n_0   |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2368_2431_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1856_1919_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2432_2495_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1728_1791_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1792_1855_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1152_1215_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2240_2303_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_0_63_0_2_i_4_n_0      |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1472_1535_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1536_1599_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1664_1727_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2048_2111_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2176_2239_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2496_2559_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2560_2623_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3264_3327_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1600_1663_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2624_2687_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2688_2751_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2752_2815_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_1984_2047_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_3008_3071_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2944_3007_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2816_2879_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/FIFO_reg_2880_2943_0_2_i_1_n_0 |                                             |                4 |             12 |
+|  CLK_IBUF_BUFG | snd/transmitter/n_elements[0]_i_1_n_0          | snd/transmitter/write_index_reg[1]_rep__1_0 |                4 |             13 |
+|  CLK_IBUF_BUFG | snd/splitter/write_index_reg[11]               | snd/transmitter/write_index_reg[1]_rep__1_0 |                4 |             15 |
+|  CLK_IBUF_BUFG | snd/transmitter/read_index[0]_i_1_n_0          | snd/transmitter/write_index_reg[1]_rep__1_0 |                5 |             17 |
+|  CLK_IBUF_BUFG | rcv/receiver/DATAE_FROM_UART                   | snd/transmitter/write_index_reg[1]_rep__1_0 |               12 |             24 |
+|  CLK_IBUF_BUFG | module/D[0]                                    | snd/transmitter/write_index_reg[1]_rep__1_0 |                7 |             24 |
+|  CLK_IBUF_BUFG |                                                | rcv/merger/SR[0]                            |               17 |             24 |
+|  CLK_IBUF_BUFG |                                                | snd/transmitter/write_index_reg[1]_rep__1_0 |               17 |             27 |
++----------------+------------------------------------------------+---------------------------------------------+------------------+----------------+
+
+
++--------+-----------------------+
+| Fanout | Number of ControlSets |
++--------+-----------------------+
+| 1      |                     1 |
+| 4      |                     1 |
+| 5      |                     1 |
+| 6      |                     1 |
+| 7      |                     1 |
+| 8      |                     2 |
+| 12     |                    64 |
+| 13     |                     1 |
+| 15     |                     1 |
+| 16+    |                     5 |
++--------+-----------------------+
+
+

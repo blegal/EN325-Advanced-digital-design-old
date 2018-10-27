@@ -94,8 +94,7 @@ void HardEncoder::do_action()
     t.c_cflag     = CREAD | CLOCAL;     // turn on READ
     t.c_cflag    |= CS8;
     t.c_cc[VMIN]  = 0;
-    t.c_cc[VTIME] = 50;     // 5 sec timeout
-    //cfsetspeed(&t, B115200); // règle la vitesse
+    t.c_cc[VTIME] = 50;     // timeout
     cfsetispeed(&t, B921600);
     cfsetospeed(&t, B921600);
     tcsetattr(fileDescriptor, TCSAFLUSH, &t); // envoie le tout au driver

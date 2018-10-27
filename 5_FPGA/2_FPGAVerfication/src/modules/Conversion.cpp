@@ -43,7 +43,10 @@ using namespace std;
 	#include <sys/select.h>
 	#include <sys/time.h>
 	#include <time.h>
+<<<<<<< Updated upstream
 	#include <cassert>
+=======
+>>>>>>> Stashed changes
 #endif
 
 void Conversion::do_conversion(){

@@ -11,7 +11,7 @@
 
 CLigne::CLigne(int _taille){
 	taille = _taille;
-	ligne = (CPixel**)new int[taille];
+	ligne = (CPixel**)new CPixel*[taille];
 	for(int i=0; i<taille; i++)
 		ligne[i] = new CPixel();
 }

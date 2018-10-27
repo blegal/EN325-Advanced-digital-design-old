@@ -10,7 +10,7 @@ using namespace std;
 
 // POUR EVITER LES DISTORTIONS, IL EST NECESSAIRE D'ULISER DES CANAUX DE TYPE
 // INT CAR SINON LES TRONCATURES INT => UNSIGNED INT SONT FAUSSE !
-int main (int argc, char * argv []){
+int sc_main (int argc, char * argv []){
 	cout << "Initialisation des composants..." << endl;
 	ImageIn      		gene ("Data_Generator_1");
 	Conversion 			conv ("conversion");
@@ -18,9 +18,9 @@ int main (int argc, char * argv []){
 	ImageOut 			term ("Terminal_1");
 
 	cout << "Creation des signaux d'interconnexion..." << endl;
-	sc_fifo<unsigned char>  s1("FIFO_1", 128);
-	sc_fifo<unsigned char>  s2("FIFO_2", 128);
-	sc_fifo<unsigned char>  s3("FIFO_3", 128);
+	sc_fifo<unsigned char>  s1("FIFO_1", 4096);
+	sc_fifo<unsigned char>  s2("FIFO_2", 4096);
+	sc_fifo<unsigned char>  s3("FIFO_3", 4096);
 
 	cout << "Mapping des composants..." << endl;
 	gene.s(s1);
