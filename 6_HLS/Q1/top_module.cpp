@@ -1,5 +1,7 @@
 
-#include "top_module.h"
+#include "tb_modules/Generator.h"
+#include "tb_modules/Analyzer.h"
+#include "my_module.h"
 
 int main (int argc, char * argv []){
 	cout << "Initialisation des composants..." << endl;
@@ -8,15 +10,15 @@ int main (int argc, char * argv []){
 	Analyzer  C("Terminal_1");
 
 	cout << "Creation des signaux d'interconnexion..." << endl;
-	sc_fifo<int> s1(16);
-	sc_fifo<int> s2(16);
+	sc_fifo  <int > s1(16);
+	sc_fifo  <int > s2(16);
 	sc_signal<bool> reset;
 
 	cout << "Mapping des composants..." << endl;
 	A.s(s1);
 	B.e(s1);
 
-	B.s (s2);
+	B.s(s2);
 	C.e(s2);
 
 	sc_clock clk("clk",10,SC_NS);
