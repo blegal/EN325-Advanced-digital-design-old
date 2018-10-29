@@ -70,7 +70,7 @@ Apres ces quelques exemples pédagogiques, vous avez suffisamment de connaissanc
 - Créez un projet par module pour commencer.
 - Faites la synthèse de chacun des modules SystemC.
 - En fonction des performances obtenues, si cela est nécessaire, optimisez la description SystemC et/ou ajoutez des pragma.
-- Une fois que l’ensemble des modules ont été synthétisé, développez un modèle SystemC qui regroupe l’ensemble de la chaine de traitement. Vous raccorderez les différents modules à l’aide de sc_fifo de profondeur 64.
+- Une fois que l’ensemble des modules ont été synthétisé, développez un modèle SystemC qui regroupe l’ensemble de la chaine de traitement. Vous raccorderez les différents modules à l’aide de **sc_fifo** de profondeur 64.
 - Faites la synthèse de la chaine JPEG. Quelles performances obtenez vous ?
 - Combien de temps, faut il pour traiter une image de résolution 4k @ 100MHz ?
 - Optimisez votre description SystemC pour obtenir de meilleures performances.

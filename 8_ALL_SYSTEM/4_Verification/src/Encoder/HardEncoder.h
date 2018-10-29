@@ -11,7 +11,6 @@
 
 #include "systemc.h"
 
-
 SC_MODULE(HardEncoder)
 {
 public:

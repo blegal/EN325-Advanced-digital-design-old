@@ -42,7 +42,6 @@ void HardEncoder::do_action()
 {
     int fileDescriptor = -1;
 
-#define MACOS
 #ifdef MACOS
     vector<std::string> vs;
     vs.push_back("/dev/cu.usbserial-210274532517B");
@@ -54,11 +53,8 @@ void HardEncoder::do_action()
     vs.push_back("/dev/cu.usbserial-210274533335A");
     vs.push_back("/dev/cu.usbserial-210274531985B");
     vs.push_back("/dev/cu.usbserial-210274531985A");
-    
-    vs.push_back("/dev/cu.usbserial-210274532494B");
-    vs.push_back("/dev/cu.usbserial-210274532494A");
 
-    for (unsigned long i = 0; i < vs.size(); i += 1) {
+    for (int i = 0; i < vs.size(); i += 1) {
         std::string s = vs.at(i);
         fileDescriptor = open(s.c_str(), O_RDWR | O_NOCTTY);
         if (fileDescriptor != -1)
@@ -94,22 +90,26 @@ void HardEncoder::do_action()
     t.c_cflag     = CREAD | CLOCAL;     // turn on READ
     t.c_cflag    |= CS8;
     t.c_cc[VMIN]  = 0;
-    t.c_cc[VTIME] = 50;     // timeout
+    t.c_cc[VTIME] = 50;     // 5 sec timeout
+    //cfsetspeed(&t, B115200); // règle la vitesse
     cfsetispeed(&t, B921600);
     cfsetospeed(&t, B921600);
     tcsetattr(fileDescriptor, TCSAFLUSH, &t); // envoie le tout au driver
 #endif
 
+    int cpt = 0;
     while( true ){
         
         char ibuffer[3 * 64];
         for(int i = 0; i < 3 * 64; i += 1) ibuffer[i] = e.read();
 
         int wBytes = write( fileDescriptor, ibuffer, 3 * 64 * sizeof(unsigned char) );
+//        cout << "wBytes = " << wBytes << endl; fflush(stdout);
         assert( wBytes == (3 * 64 * sizeof(unsigned char)) );
 
         signed short obuffer[3 * 64];
         int rBytes = read( fileDescriptor, obuffer, 3 * 64 * sizeof(signed short) );
+//        cout << "rBytes = " << rBytes << endl; fflush(stdout);
         assert( rBytes == (3 * 64 * sizeof(signed short)) );
         
         for(int i = 0; i < 3 * 64; i += 1)

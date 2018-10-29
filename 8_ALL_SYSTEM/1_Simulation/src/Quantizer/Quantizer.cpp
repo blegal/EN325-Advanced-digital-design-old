@@ -8,8 +8,6 @@
  */
 #include "Quantizer.h"
 
-
-
 // q = 90%
 static const unsigned char _YTable[64]  = {
         3,   2,   2,   3,   5,   8,  10,  12,

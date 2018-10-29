@@ -2,25 +2,23 @@
 
 ##	Introduction
 
-Dans la partie précédente vous avez générer plusieurs architectures matérielles permettant d'implantater la fonction de conversion colorimétrique.
+Dans la partie précédente vous avez générer plusieurs architectures matérielles à l'aide de l'outil Vivado HLS. Durant vos expérimentations, vous avez générer différentes architectures implantatant la fonction de conversion colorimétrique.
 
 Ces dernières ont été validées par des simulation avant et apres synthèse HLS. Cependant, nous allons maintenant vérifier que le fonctionnement sur circuit FPGA (et donc après synthèse logique) est valide.
 
 ##	Validation fonctionnelle (1/2)
 
-Dans un premier temps, vous allez vous rendre dans le repertoire **XXX** dans lequel vous attend un projet Vivado. Ce dernier inclut les composants nécessaire à la communication avec le FPGA via la liaison UART.
+Dans un premier temps, vous allez vous rendre dans le repertoire **1_FPGASynthesis** dans lequel vous attend un projet Vivado. Ce dernier inclut les composants nécessaire à la communication avec le FPGA via la liaison UART.
 
-- A
-- B
-- C
-- D
+- Vérifiez que vous avez bien exporté (Export RTL) l'architecture VHDL du composant que vous avez générez dans Vivado HLS.
+- Ouvrez le projet **1_FPGASynthesis** dans l'outil Vivado.
+- Allez dans les paramètres du projet (Settings) puis déplacer vous dans IP et Repository. Ajoutez un nouveau dépot dont la localisation est consituée du repertoire ou vous avez fait votre synthèse HLS, le nom de la solution puis "impl/ip". Validez votre choix. L'outil doit vous informer qu'il à identifier un IP dans votre dépot.
+- Rendez vous ensuite dans "IP catalog". Vous devez y retrouver votre dépot. Ajouter un composant dans votre projet. Si ce dernier ne match pas parfaitement au niveau du nom à sa décalration dans le code VHDL, mettez à jour le VHDL.
+- Lancez la synthèse, générez le bitstream et configuez la Nexys 4.
 
 ##	Validation fonctionnelle (2/2)
 
-Maintenant que vous avez valider fonctionnellement le comportement de l'architecture séquentielle produite par l'outil Vivado HLS, vous allez faire de même pour l'architecture pipeline. Cela vous permettra de vous assurer que cela n'était pas un coup de chance...
+Maintenant que la carte est configurée, rendez vous dans le repertoire **2_FPGAVerification**. Ce dernier contient le code SystemC permettant de communiquer avec la carte comme dans la partie 5_FPGA.
 
-- Rendez vous dans le repertoire **XXX**.
-- Recommencer le processus décrit dans la question précédente en faisait attention à sélectionner l'architecture pipeline.
-- Validez le comportement du module sur carte à l'aide de la même description SystemC que précedement.
-
-## Conclusion
+- Compilez le code logiciel.
+- Vérifiez que l'image de sortie correspond à l'attendu.

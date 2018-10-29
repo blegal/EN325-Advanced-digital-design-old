@@ -22,8 +22,8 @@ public:
 
 	SC_CTOR(uart_wrapper):
 		enc ("Encoder"   ),
-		fin  ("FIFO_I", 192),
-    	fou  ("FIFO_O", 192)
+		fin ("FIFO_I", 192),
+    	fou ("FIFO_O", 192)
 	{
 		enc.clk(clk); enc.reset(reset);
 		enc.e(fin);
@@ -35,39 +35,38 @@ public:
 
 private:
     Encoder enc;
-	sc_fifo<signed char>  fin;
-	sc_fifo<signed short> fou;
+	sc_fifo<unsigned char> fin;
+	sc_fifo<signed  short> fou;
 
-	signed char  i_buffer[192];
-	signed short o_buffer[192];
 
 	void do_action(){
+		unsigned char  i_buffer[192];
+
 		while( true ){
 
 			//
 			// ON MEMORISE LES DONNEES PROVENANT DE L'UART
 			//
-			for(int i = 0; i < 192; i += 1)
+			for(int i = 0; i < 192; i += 1){
 				i_buffer[ i ] = e.read();
+			}
 
 			//
 			// ON TRANSMET LES DONNEES VERS LE SYSTEME
 			//
-			for(int i = 0; i < 192; i += 1)
+			for(int i = 0; i < 192; i += 1){
 				fin.write( i_buffer[ i ] );
+			}
 
 			//
 			// ON RECUPERE LES DONNEES DEPUIS LE SYSTEME
-			//
-
-
-			//
 			// ON ENVOIE LES DONNEES VERS L'UART
 			//
-
-			signed short v = ff.read();
-			s.write( (v >>    8) );
-			s.write( (v  & 0xFF) );
+			for(int i = 0; i < 192; i += 1){
+				const signed short v = fou.read();
+				s.write( (v >>    8) );
+				s.write( (v  & 0xFF) );
+			}
 		}
 	}
 };

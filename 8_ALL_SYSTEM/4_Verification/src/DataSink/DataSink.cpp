@@ -305,6 +305,21 @@ void DataSink::do_print()
 
     int nbMB    = (width/8) * (height/8);
     for(int i=0; i<nbMB; i+=1){
+    
+        if( i%10 == 0 ){
+            float progress = (float)i/(float)nbMB;
+            int barWidth = 70;
+            std::cout << "[";
+            int pos = barWidth * progress;
+            for (int i = 0; i < barWidth; ++i) {
+                if (i < pos) std::cout << "=";
+                else if (i == pos) std::cout << ">";
+                else std::cout << " ";
+            }
+            std::cout << "] " << int(progress * 100.0) << " % \r";
+            std::cout.flush();
+        }
+
         int dataSet[64];
         for(int i=0; i<64; i+=1) dataSet[i] = e.read();
         DCY = jo_processDU(bitBuf, bitCnt, dataSet, DCY, YDC_HT,  YAC_HT );
