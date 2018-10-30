@@ -13,8 +13,22 @@ REFERENCES INTERNET
 Dans un premier temps, vous allez vous rendre dans le repertoire **1_Simulation** dans lequel vous attend la chaine de simulation SystemC.
 
 - Compilez la chaine de compression.
+
+```
+cd 1_Simulation
+mkdir build
+cd build
+cmake ..
+make
+```
+
 - Lancez l'éxécution du modèle.
-- Ouvrez le fichier JPEG généré post-simulation.
+
+```
+./JPEG_processing
+```
+
+- Ouvrez le fichier JPEG généré post-simulation. Normalement il se nomme **ofile.jpeg**.
 - Ouvrez les modèles SystemC utilisés pour modéliser le traitement et confrontez les à votre comprehension du système.
 
 ##	Synthèse HLS de la chaine de compression
