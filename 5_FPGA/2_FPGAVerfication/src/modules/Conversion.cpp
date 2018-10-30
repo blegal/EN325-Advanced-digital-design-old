@@ -43,10 +43,7 @@ using namespace std;
 	#include <sys/select.h>
 	#include <sys/time.h>
 	#include <time.h>
-<<<<<<< Updated upstream
 	#include <cassert>
-=======
->>>>>>> Stashed changes
 #endif
 
 void Conversion::do_conversion(){
@@ -111,7 +108,7 @@ void Conversion::do_conversion(){
 	#define buff_size 8
 
     while( true ){
-        
+
         unsigned char buffer[3 * buff_size];
         for(int i = 0; i < 3 * buff_size; i += 1)
         	buffer[i] = e.read();
@@ -126,8 +123,14 @@ void Conversion::do_conversion(){
         printf("\n");
 #endif
 
-        int rBytes = read( fileDescriptor, buffer, 3 * buff_size * sizeof(unsigned char) );
-        assert( rBytes == (3 * buff_size * sizeof(unsigned char)) );
+				int reste = 3 * buff_size * sizeof(unsigned char);
+				int rBytes = 0;
+				do{
+					int n = read( fileDescriptor, buffer, reste );
+					rBytes += n;
+					reste -= n;
+					assert( n > 0);
+				}while (reste != 0);
 
 #if 0
         printf("<< ");
@@ -135,9 +138,8 @@ void Conversion::do_conversion(){
         	printf("%4d ", buffer[i]);
         printf("\n");
 #endif
-        
+
         for(int i = 0; i < 3 * buff_size; i += 1)
         	s.write( buffer[i] );
     }
 }
-

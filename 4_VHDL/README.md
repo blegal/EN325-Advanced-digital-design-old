@@ -4,14 +4,14 @@
 
 2. Conception de l'architecture en VHDL
 
-Le modèle SystemC que vous avez décrit est très proche de la description VHDL RTL du composant. Dans cet TP nous supposerons que la finalité de l'étude est d'intégrer toute la chaîne de compression JPEG au sein d'un FPGA. Mais vous n'êtes en charge pour le moment que de l'implantation du module **RGB_2_YCbCr**. Vous allez donc devoir écrire le code VHDL correspondant à votre module SystemC quantifié :-)
+Le modèle SystemC que vous avez décrit est très proche de la description VHDL RTL du composant. Dans cet TP nous supposerons que la finalité de l'étude est d'intégrer toute la chaîne de compression JPEG au sein d'un FPGA. Mais vous n'êtes en charge pour le moment que de l'implantation du module **RGB2YCbCr**. Vous allez donc devoir écrire le code VHDL correspondant à votre module SystemC quantifié :-)
 
 **Remarque**
 
 Afin d'éviter des problèmes par la suite... Vous prendrez soin de respecter la spécification de l'entité ci-dessous:
 
 ```
-entity RGB_2_YCbCr is
+entity RGB2YCbCr is
     port(
         clk     : in  STD_LOGIC;
         i_data  : in  STD_LOGIC_VECTOR(23 downto 0);
@@ -19,7 +19,7 @@ entity RGB_2_YCbCr is
         i_valid : in  STD_LOGIC;
         o_valid : out STD_LOGIC
 	);
-end RGB_2_YCbCr;
+end RGB2YCbCr;
 ```
 
 De plus, pour des problèmes de compatibilité avec ModelSim & l'interface de co-simulation avec le FPGA, vous considérerez les regroupements d'information suivants en entrée :
