@@ -130,7 +130,7 @@ void Conversion::do_conversion(){
 					rBytes += n;
 					reste -= n;
 					assert( n > 0);
-				}while (reste == 0);
+				}while (reste != 0);
 
 #if 0
         printf("<< ");
