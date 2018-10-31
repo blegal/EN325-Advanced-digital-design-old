@@ -61,16 +61,5 @@ Maintenant que vous maitrisez les concepts de base de l’outil Vivado HLS, vous
 - Analysez les résultats de synthèse.
 - Comparez les performances obtenues vis-à-vis du module VHDL que vous avec décrit à la main durant les TP précédents.
 - Comparez les performances obtenues vis à vis du module VHDL que vous avec décrit à la main durant les TP précédents.
-- Afin d’améliorer les performances, il est possible de travailler sur plusieurs données en parallèle (données provenant d’itérations successives). Pour cela, étudiez les pragmas [HLS STREAM] et [HLS PIPELINE] présentés dans la documentation de l’outil Vivado HLS.
+- Afin d’améliorer les performances, il est possible de travailler sur plusieurs données en parallèle (données provenant d’itérations successives). Pour cela, étudiez les pragmas [HLS PIPELINE], [HLS INLINE] et/ou [HLS UNROLL] présentés dans la documentation de l’outil Vivado HLS.
 - Améliorez les performances de votre module en prenant en considération le fait que 64 échantillons sont toujours traités.
-
-## APPLICATION A UN CAS D’ETUDE REEL
-
-Apres ces quelques exemples pédagogiques, vous avez suffisamment de connaissances pour essayer d’intégrer une vraie application :-) la chaine de compression JPEG : RGB_2_YUV + DCT2d + Quantification + ZigZag.
-- Créez un projet par module pour commencer.
-- Faites la synthèse de chacun des modules SystemC.
-- En fonction des performances obtenues, si cela est nécessaire, optimisez la description SystemC et/ou ajoutez des pragma.
-- Une fois que l’ensemble des modules ont été synthétisé, développez un modèle SystemC qui regroupe l’ensemble de la chaine de traitement. Vous raccorderez les différents modules à l’aide de **sc_fifo** de profondeur 64.
-- Faites la synthèse de la chaine JPEG. Quelles performances obtenez vous ?
-- Combien de temps, faut il pour traiter une image de résolution 4k @ 100MHz ?
-- Optimisez votre description SystemC pour obtenir de meilleures performances.
