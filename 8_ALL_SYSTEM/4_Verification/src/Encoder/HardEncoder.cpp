@@ -98,8 +98,8 @@ void HardEncoder::do_action()
 #endif
 
     int cpt = 0;
-    while( true ){
-        
+while( true ){
+
         char ibuffer[3 * 64];
         for(int i = 0; i < 3 * 64; i += 1) ibuffer[i] = e.read();
 
@@ -108,10 +108,19 @@ void HardEncoder::do_action()
         assert( wBytes == (3 * 64 * sizeof(unsigned char)) );
 
         signed short obuffer[3 * 64];
-        int rBytes = read( fileDescriptor, obuffer, 3 * 64 * sizeof(signed short) );
-//        cout << "rBytes = " << rBytes << endl; fflush(stdout);
+		char* ptr = (char*)obuffer;
+		int reste = 3 * 64 * sizeof(signed short);
+        int rBytes = 0;
+        do{
+            int n = read( fileDescriptor, ptr+rBytes, reste );
+            rBytes += n;
+            reste  -= n;
+            assert( n > 0);
+        }while (reste != 0);
+
+		//        cout << "wBytes = " << wBytes << endl; fflush(stdout);
         assert( rBytes == (3 * 64 * sizeof(signed short)) );
-        
+
         for(int i = 0; i < 3 * 64; i += 1)
             obuffer[i] = ((obuffer[i] & 0xFF) << 8) | ((obuffer[i] >> 8) & 0xFF);
 
