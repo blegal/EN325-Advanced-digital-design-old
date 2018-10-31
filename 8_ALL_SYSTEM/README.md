@@ -12,22 +12,10 @@ REFERENCES INTERNET
 
 Dans un premier temps, vous allez vous rendre dans le repertoire **1_Simulation** dans lequel vous attend la chaine de simulation SystemC.
 
-- Compilez la chaine de compression.
+**RECUPEREZ LE FICHIER MAKEFILE DANS LE GITHUB ET N'UTILISEZ PAS LE CMAKE !!!**
 
-```
-cd 1_Simulation
-mkdir build
-cd build
-cmake ..
-make
-```
-
+- Compilez la chaine de compression à l'aide du Makefile.
 - Lancez l'éxécution du modèle.
-
-```
-./JPEG_processing
-```
-
 - Ouvrez le fichier JPEG généré post-simulation. Normalement il se nomme **ofile.jpeg**.
 - Ouvrez les modèles SystemC utilisés pour modéliser le traitement et confrontez les à votre comprehension du système.
 
