@@ -45,6 +45,8 @@ int main (int argc, char * argv []){
     cfsetospeed(&t, B921600);
     tcsetattr(fileDescriptor, TCSAFLUSH, &t); // envoie le tout au driver
 
+	int MBps;
+	int cpt = 0;
     while( true )
     {
 
@@ -53,12 +55,38 @@ int main (int argc, char * argv []){
       if( read < 0 ) exit( 0 );
       if( rBytes == 4 )
       {
-        printf("Performance = %d Macroblocs par seconde\r", __bswap_32(values));
+      	MBps = __bswap_32(values);
+        printf("Performance = %d MB/s OR %d Pixels/s", MBps, 64 * MBps);
+        if( (cpt & 0x01) == 0) printf("(-)\r");
+        if( (cpt & 0x01) == 1) printf("(+)\r");
         fflush( stdout );
+        
+        cpt += 1;
+        
+        if( cpt == 16 ) break;
       }
     }
 
-  close( fileDescriptor );
+    printf("\n");
+    printf("DECODING THROUGHPUT MEASURE\n");
+    printf("---------------------------\n");
+    printf("- FORMAT PAL   : ( 768 x  576) = %f Pic/Sec\n", (64.0f*MBps) / ( 768.0f* 576.0f));
+    printf("- FORMAT XVGA  : (1024 x  768) = %f Pic/Sec\n", (64.0f*MBps) / (1024.0f* 768.0f));
+    printf("- FORMAT 720p  : (1280 ×  720) = %f Pic/Sec\n", (64.0f*MBps) / (1280.0f* 720.0f));
+    printf("- FORMAT 1080p : (1920 × 1080) = %f Pic/Sec\n", (64.0f*MBps) / (1920.0f*1080.0f));
+    printf("- FORMAT 4K2K  : (4096 x 2160) = %f Pic/Sec\n", (64.0f*MBps) / (4096.0f*2160.0f));
+    printf("\n");
+    printf("\n");
+    printf("DECODING LATENCY MEASURE\n");
+    printf("---------------------------\n");
+    printf("- FORMAT PAL   : ( 768 x  576) = %f ms\n", 1000.0f / ((64.0f*MBps) / ( 768.0f* 576.0f)));
+    printf("- FORMAT XVGA  : (1024 x  768) = %f ms\n", 1000.0f / ((64.0f*MBps) / (1024.0f* 768.0f)));
+    printf("- FORMAT 720p  : (1280 ×  720) = %f ms\n", 1000.0f / ((64.0f*MBps) / (1280.0f* 720.0f)));
+    printf("- FORMAT 1080p : (1920 × 1080) = %f ms\n", 1000.0f / ((64.0f*MBps) / (1920.0f*1080.0f)));
+    printf("- FORMAT 4K2K  : (4096 x 2160) = %f ms\n", 1000.0f / ((64.0f*MBps) / (4096.0f*2160.0f)));
+    printf("\n");
 
-  return 0;
+ 	close( fileDescriptor );
+
+ 	return 0;
 }
