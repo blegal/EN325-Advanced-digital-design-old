@@ -12,7 +12,7 @@ L'objectif de cette séquence pédagogique est de vous faire prendre conscience 
 
 Afin de vous convaincre des performances calamiteuses par exemple du format de codage flottant et par voie de conséquence du bien fondé du codage en virgule fixe, vous allez réaliser quelques synthèses logiques. Vous pourrez ainsi observer l’évolution des ressources matérielles nécessaire à la mise en oeuvre des opérations arithmétiques manipulant des données entières et flottantes.
 
-L’évaluation que vous allez effectuer sera basée sur la technologie FPGA. La famille Virtex-7 (XXXX) de Xilinx sera considérée et l’outil de synthèse employé sera Xilinx Vivado.
+L’évaluation que vous allez effectuer sera basée sur la technologie FPGA. La famille Artix-7 (XC7A100T-1CSG324C) de Xilinx sera considérée et l’outil de synthèse employé sera Xilinx Vivado (version 2018.2).
 
 ## Q1. Addition de nombres entiers
 
@@ -23,10 +23,14 @@ La première série d’expériences va cibler l’évaluation des caractéristi
 Pour des raisons de simplicité, nous omettrons dans cette étude la propagation de la retenue. L’opérateur d’addition que vous devez implanter consomme deux données sur *N* bits et produit une donnée sur *N* bits.
 
 A partir de ces informations :
-- Créez un projet Vivado ciblant une carte d'évaluation VC707.
+- Créez un projet Vivado ciblant une carte d'évaluation Nexys-4.
 - Récupérer la description VHDL de l'opérateur d'addition disponible sur le site internet de votre enseignant et intégrer la dans votre projet.
 - Réalisez la synthèse logique du module et notez la complexité matérielle de l’opérateur (nombre de LUTs) ainsi que la durée du chemin critique.
 - Faites varier la largeur des données d’entrée avec les valeurs suivantes [8, 16, 24, 32, 64] afin d'avoir une idée plus précise de l'évolution de la complexité matérielle.
+
+**Attention**
+
+Afin de ne pas fausser les mesures de performance, vous devez ajouter l'option "-mode out_of_context" dans les options de synthèse de Vivado (Synthesis => More options). Dans le cas contraire les résultats post-implantation rapportant le timing seront faussés.
 
 **Remarque**
 
