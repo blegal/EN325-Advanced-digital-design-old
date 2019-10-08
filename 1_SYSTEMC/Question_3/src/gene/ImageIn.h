@@ -11,7 +11,7 @@
 
 SC_MODULE(ImageIn)          // module (class) declaration
 {
-	sc_fifo_out<unsigned char> s;
+	sc_fifo_out<int> s;
 
     void do_gen();           // process
 
