@@ -18,9 +18,9 @@ int main (int argc, char * argv []){
 	ImageOut 			term ("Terminal_1");
 
 	cout << "Creation des signaux d'interconnexion..." << endl;
-	sc_fifo<unsigned char>  s1("FIFO_1", 128);
-	sc_fifo<unsigned char>  s2("FIFO_2", 128);
-	sc_fifo<unsigned char>  s3("FIFO_3", 128);
+	sc_fifo<int>  s1("FIFO_1", 128);
+	sc_fifo<int>  s2("FIFO_2", 128);
+	sc_fifo<int>  s3("FIFO_3", 128);
 
 	cout << "Mapping des composants..." << endl;
 	gene.s(s1);
