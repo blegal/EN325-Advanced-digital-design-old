@@ -43,8 +43,8 @@ Par convention, les éléments notés rvb[0], rvb[1], rvb[2] désigneront respec
 
 **A partir de ces informations :**
 
-- Ouvrez le fichier
-- Écrivez les deux fonctions et votre programme $main$ dans un
+- Ouvrez le fichier;
+- Écrivez les deux fonctions et votre programme *main*;
 - Testez votre programme à l'aide des triplets de données fournis ci-dessous.
 
 ```
