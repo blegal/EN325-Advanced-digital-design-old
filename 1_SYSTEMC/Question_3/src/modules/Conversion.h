@@ -14,8 +14,8 @@ private:
 	int t[3];
 
 public:
-	sc_fifo_in <unsigned char> e;
-    sc_fifo_out<unsigned char> s;
+	sc_fifo_in <int> e;
+    sc_fifo_out<int> s;
 
 	SC_CTOR(Conversion)
 	{
