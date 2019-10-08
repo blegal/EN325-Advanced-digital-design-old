@@ -11,7 +11,7 @@
 
 SC_MODULE(ImageOut)
 {
-	sc_fifo_in<unsigned char> e;
+	sc_fifo_in<int> e;
 
 	void do_print();
 
