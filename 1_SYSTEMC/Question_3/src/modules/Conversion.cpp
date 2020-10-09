@@ -20,9 +20,9 @@ void Conversion::do_conversion(){
 
     	ConversionCouleurs(d, t);
 
-	   s.write( (unsigned char)t[0] );
-	   s.write( (unsigned char)t[1] );
-	   s.write( (unsigned char)t[2] );
+	   s.write( t[0] );
+	   s.write( t[1] );
+	   s.write( t[2] );
 	}
 }
 
